@@ -1,8 +1,8 @@
 # P1 CS361-TheoryOfComputation
 
 * Author: Phillip Newell
-* Author: Chinwe 
-* Class: CS121 Section 001
+* Author: Chinwendum Njoku 
+* Class: CS361 Section 001
 * Semester: Fall 2021
 
 ## Overview
