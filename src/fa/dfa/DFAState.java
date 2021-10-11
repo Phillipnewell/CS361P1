@@ -1,38 +1,30 @@
 package fa.dfa;
-import java.util.HashMap;
+
+import java.util.LinkedHashMap;
+
 import fa.State;
 
-public class DFAState extends State{
-    private boolean isFinal;
-    private HashMap<Character, DFAState> transitions;
+public class DFAState extends State {
+	private Boolean isFinal;
+	LinkedHashMap<Character, DFAState> transitionTo;
+
+	//constructor
+	public DFAState(String nextToken) {
+		super.name = nextToken;
+		this.transitionTo = new LinkedHashMap<Character, DFAState>();
+	}
 
 
-    //Constructor
-    public DFAState (String name, boolean isFinal) {
-        this.name = name;
-        transitions = new HashMap<Character, DFAState>();
-        this.isFinal = isFinal;
-    }
+	public Boolean getIsFinal() {
+		return isFinal;
+	}
+	
+	public void setIsFinal(Boolean isFinal) {
+		this.isFinal = isFinal;
+	}
+	
+	public void addTransition(Character myChar, DFAState toState) {
+		transitionTo.put(myChar, toState);
+	}
 
-    //This returns the final state of the machine
-    public boolean isFinal(){
-        return this.isFinal;
-    }
-    //This takes the alphabet and symbol and add it to the transition Hashmap 
-    public void addTransition(Character symbol, DFAState toState) {
-        transitions.put(symbol, toState);
-
-    }
-
-    //This checks what state to transition to from the HashMap
-    public DFAState getToState(String symbol) {
-        return null;//DFAState;
-
-    }
-
-
-
-    
-    
-        
-    }
+}
