@@ -10,8 +10,8 @@ public class DFA implements DFAInterface{
 	Set<Character> sigma = new HashSet<Character>();//My abc's of the language
 	Set<DFAState> allStates = new HashSet<DFAState>();
 	Set<DFAState> finalStates = new HashSet<DFAState>();
-	HashMap<String, DFAState> lookup = new HashMap<String, DFAState>();
-	DFAState startState;
+	HashMap<String, DFAState> lookup = new HashMap<String, DFAState>();//I can refer to my states by their names
+	DFAState startState;//only 1 startState; does not need set
 
 	public void addFinalState(String nextToken) {
 		DFAState finalState = new DFAState(nextToken);
@@ -90,30 +90,51 @@ public class DFA implements DFAInterface{
 	}
 	
 	public String toString() {
-		Object[] array = sigma.toArray();
-		System.out.println("Q= {" + allStates + "}");
-		System.out.println("Sigma = {" + getABC() + "}");
-		System.out.println("Delta");
+		Object[] alphabet = sigma.toArray();
+		Object[] arrayOfAllStates = allStates.toArray();
+		Object[] arrayOfFinalStates = allStates.toArray();
+		String tab = ("          ");
+		//print set of states
+		System.out.print("Q= {");
+		for(int i=0; i<allStates.size(); i++) {
+					System.out.print(arrayOfAllStates[i]);
+				}
+		System.out.println("}");
+		//print alphabet
+		System.out.print("Sigma = {");
+		for(int j=0; j<sigma.size(); j++) {
+			System.out.print(alphabet[j]);
+		}
+		System.out.println("}");
+		//print delta set
+		System.out.println("Delta =");
 		java.util.Iterator<Character> sigmaIter = sigma.iterator();
+		System.out.print(tab);
 		for(int i=0; i<sigma.size(); i++) {
-			System.out.print("          ");
+			System.out.print(tab);
 			System.out.print(sigmaIter.next());
 		}
 		java.util.Iterator<DFAState> stateIter = allStates.iterator();
 		System.out.println();
 		for(int i=0; i<allStates.size(); i++) {
 			DFAState stateRow = stateIter.next();
-			System.out.print(stateRow);
+			System.out.print(tab + stateRow);
 			System.out.print("         ");
 			for(int j=0; j<sigma.size(); j++) {
-				System.out.print(stateRow.transitionTo.get(array[j]));
+				System.out.print(stateRow.transitionTo.get(alphabet[j]));
 				System.out.print("          ");
 			}
 			System.out.println();
 		}
+		//print the start state
 		System.out.println("q0: " + getStartState());
-		String returnThis = ("F {" + finalStates + "}");
-		return returnThis;
+		//print final States
+		System.out.print("F {");
+		for(int i=0; i<finalStates.size(); i++) {
+			System.out.print(arrayOfFinalStates[i]);
+			}
+		String returnString = ("}\n");
+		return returnString;
 	}
 
 }
