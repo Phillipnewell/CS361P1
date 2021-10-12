@@ -39,7 +39,7 @@ public class DFA implements DFAInterface{
 	public void addTransition(String valueOf1, char c, String valueOf2) {
 		sigma.add(c);//list of abc's of language
 		DFAState fromState = lookup.get(valueOf1);
-		DFAState toState = lookup.get(valueOf1);
+		DFAState toState = lookup.get(valueOf2);
 		fromState.addTransition(c,toState);
 	}
 
@@ -51,9 +51,16 @@ public class DFA implements DFAInterface{
 		}
 
 	public boolean accepts(String nextLine) {
-		System.out.println("here" + nextLine);
-		DFAState nextState = lookup.get(nextLine);
-		return nextState.getIsFinal();
+		char[] arrayOfChar = nextLine.toCharArray();
+		DFAState currentState = startState;
+		for(int i=0; i < arrayOfChar.length; i++) {
+			if(arrayOfChar[i] != 'e') {
+				currentState = currentState.transitionTo.get(arrayOfChar[i]);
+			} else {
+				//do nothing
+			}
+		}
+		return currentState.getIsFinal();
 	}
 
 	@Override
@@ -83,14 +90,30 @@ public class DFA implements DFAInterface{
 	}
 	
 	public String toString() {
+		Object[] array = sigma.toArray();
 		System.out.println("Q= {" + allStates + "}");
 		System.out.println("Sigma = {" + getABC() + "}");
 		System.out.println("Delta");
-		
-		//rubbish code
-		String cheese = "cheese";
-		return cheese;
-		
+		java.util.Iterator<Character> sigmaIter = sigma.iterator();
+		for(int i=0; i<sigma.size(); i++) {
+			System.out.print("          ");
+			System.out.print(sigmaIter.next());
+		}
+		java.util.Iterator<DFAState> stateIter = allStates.iterator();
+		System.out.println();
+		for(int i=0; i<allStates.size(); i++) {
+			DFAState stateRow = stateIter.next();
+			System.out.print(stateRow);
+			System.out.print("         ");
+			for(int j=0; j<sigma.size(); j++) {
+				System.out.print(stateRow.transitionTo.get(array[j]));
+				System.out.print("          ");
+			}
+			System.out.println();
+		}
+		System.out.println("q0: " + getStartState());
+		String returnThis = ("F {" + finalStates + "}");
+		return returnThis;
 	}
 
 }
