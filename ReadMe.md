@@ -7,17 +7,17 @@
 
 ## Overview
 
-Concisely explain what the program does. If this exceeds a couple of
-sentences, you're going too far. Generally you should be pulling this
-right from the project specification. I don't want you to just cut and
-paste, but paraphrase what is stated in the project specification.
+We created a project that takes in deterministic finite automatas and
+pushes out the 5-tuple of the DFA. After the 5-tuple is printed it will
+print out yes or no to whether a given set of alphabet passes.
 
 ## Compiling and Using
 
-This section should tell the user how to compile your code.  It is
-also appropriate to instruct the user how to use your code. Does your
-program require user input? If so, what does your user need to know
-about it to use it as quickly as possible?
+To compile, you need two commands: javac fa/*.java javac fa/dfa/*.java
+Then to use: java fa.dfa.DFADriver ./tests/p1tc1.txt
+The code should only take one argument at a time.
+To undo the compile: find -name "*.class" -delete
+
 
 ## Discussion
 
