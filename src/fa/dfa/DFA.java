@@ -5,7 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 import fa.State;
-
+/**
+ * October 13, 2021
+ * This class is directly responsible of mapping DFAStates, keeping records
+ * necessary for a toString print method of the 5-tuple
+ * @author Phillip Newell
+ * @author Chinwendum Njoku
+ */
 public class DFA implements DFAInterface{
 	Set<Character> sigma = new HashSet<Character>();//My abc's of the language
 	Set<DFAState> allStates = new HashSet<DFAState>();

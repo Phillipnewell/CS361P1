@@ -1,5 +1,12 @@
 package fa;
-
+/**
+ * October 13, 2021
+ * An interface that provides a method contract of what all finite 
+ * all automata states should have whether it may be deterministic
+ * or nondeterministic.
+ * @author Phillip Newell
+ * @author Chinwendum Njoku
+ */
 import java.util.Set;
 
 import fa.State;

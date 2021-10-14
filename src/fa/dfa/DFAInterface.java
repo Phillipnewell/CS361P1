@@ -3,7 +3,16 @@ package fa.dfa;
 import fa.FAInterface;
 import fa.State;
 
-
+/**
+ * October 13, 2021
+ * An interface that provides a method contract of only deterministic
+ * states may have but not to include any more than that i.e. methods
+ * that both deterministic and nondeterministic may have in common.
+ * This will mainly just be the idea that only 1 value is expected
+ * for a given transition symbol.
+ * @author Phillip Newell
+ * @author Chinwendum Njoku
+ */
 public interface DFAInterface extends FAInterface{
 
 	/**
