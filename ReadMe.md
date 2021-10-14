@@ -14,8 +14,11 @@ print out yes or no to whether a given set of alphabet passes.
 ## Compiling and Using
 
 To compile, you need two commands: javac fa/*.java javac fa/dfa/*.java
+
 Then to use: java fa.dfa.DFADriver ./tests/p1tc1.txt
+
 The code should only take one argument at a time.
+
 To undo the compile: find -name "*.class" -delete
 
 
