@@ -15,7 +15,9 @@ public class DFAState extends State {
 	private Boolean isFinal;
 	LinkedHashMap<Character, DFAState> transitionTo;
 
-	//constructor
+	/**
+	 * @param args - String nextToken is the name of the DFAState
+	 */
 	public DFAState(String nextToken) {
 		super.name = nextToken;
 		this.transitionTo = new LinkedHashMap<Character, DFAState>();
@@ -25,11 +27,17 @@ public class DFAState extends State {
 	public Boolean getIsFinal() {
 		return isFinal;
 	}
-	
+	/**
+	 * @param args - Set boolean to whether this is a finalState or not
+	 */
 	public void setIsFinal(Boolean isFinal) {
 		this.isFinal = isFinal;
 	}
 	
+	/**
+	 * @param args - Key value, character, that will call on the state to move
+	 * @param args - Value of DFAState name, String, that will need to be looked up
+	 */
 	public void addTransition(Character myChar, DFAState toState) {
 		transitionTo.put(myChar, toState);
 	}

@@ -19,6 +19,9 @@ public class DFA implements DFAInterface{
 	HashMap<String, DFAState> lookup = new HashMap<String, DFAState>();//I can refer to my states by their names
 	DFAState startState;//only 1 startState; does not need set
 
+	/**
+	 * @param args - nextToken is the string name of my DFAState being set to final
+	 */
 	public void addFinalState(String nextToken) {
 		DFAState finalState = new DFAState(nextToken);
 		finalState.setIsFinal(true);//flag final as true
@@ -27,6 +30,9 @@ public class DFA implements DFAInterface{
 		lookup.put(nextToken, finalState);
 	}
 
+	/**
+	 * @param args - String name of my new DFAState that will be referenced first via testing
+	 */
 	public void addStartState(String startStateName) {
 		if (lookup.get(startStateName) != null){
 			//start state is already in there
@@ -42,13 +48,21 @@ public class DFA implements DFAInterface{
 		}	
 	}
 
+	/**
+	 * @param args - String that will be the state I transition from
+	 * @param args - character from alphabet that causes the transition
+	 * @param args - String that will be the state I transition to
+	 */
 	public void addTransition(String valueOf1, char c, String valueOf2) {
 		sigma.add(c);//list of abc's of language
 		DFAState fromState = lookup.get(valueOf1);
 		DFAState toState = lookup.get(valueOf2);
 		fromState.addTransition(c,toState);
 	}
-
+	
+	/**
+	 * @param args - String that will be the name of my new DFAState that is neither start nor final
+	 */
 	public void addState(String nextToken) {
 		DFAState transitionState = new DFAState(nextToken);
 		transitionState.setIsFinal(false);
@@ -56,6 +70,9 @@ public class DFA implements DFAInterface{
 		lookup.put(nextToken, transitionState);
 		}
 
+	/**
+	 * @param args - String of alphabetical characters that will make my states transition
+	 */
 	public boolean accepts(String nextLine) {
 		char[] arrayOfChar = nextLine.toCharArray();
 		DFAState currentState = startState;
