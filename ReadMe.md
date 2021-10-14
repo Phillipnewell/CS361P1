@@ -38,11 +38,6 @@ the same state, then e was a test that had to pass.
 
 ## Testing
 
-You are expected to test your projects before submitting them for
-final review. Pretend that your instructor is your manager or 
-customer at work. How would you ensure that you are delivering a 
-working solution to their requirements?
-
 We confirmed that all 3 tests given were passed and then we created
 a 4th test where first state was final.  One of the transitions tested
 was e and made sure it processed the e correctly among many other strings.
@@ -51,9 +46,6 @@ was e and made sure it processed the e correctly among many other strings.
 
 https://docs.oracle.com/javase/8/docs/api/java/util/LinkedHashMap.html
 https://docs.oracle.com/javase/8/docs/api/java/util/HashSet.html
-
-
-[Here is some help creating links](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
 
 ----------
 This README template is using Markdown. To preview your README output, you can copy your file contents to a Markdown editor/previewer such as [https://stackedit.io/editor](https://stackedit.io/editor).
